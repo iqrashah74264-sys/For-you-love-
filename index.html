@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Surprise ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #ffeef2;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Floating Hearts Animation */
+        .hearts { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        .heart-shape {
+            position: absolute;
+            background: rgba(255, 77, 109, 0.2);
+            width: 20px; height: 20px;
+            transform: rotate(45deg);
+            animation: move 6s linear infinite;
+        }
+        .heart-shape::before, .heart-shape::after {
+            content: ''; width: 20px; height: 20px;
+            background: inherit; border-radius: 50%;
+            position: absolute;
+        }
+        .heart-shape::before { top: -10px; left: 0; }
+        .heart-shape::after { left: -10px; top: 0; }
+        @keyframes move {
+            0% { transform: translateY(100vh) rotate(45deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
+        }
+
+        .container { width: 90%; max-width: 500px; z-index: 10; }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        h1 { font-family: 'Dancing Script', cursive; color: #ff4d6d; font-size: 35px; margin-bottom: 10px; }
+        h2 { color: #ff4d6d; font-size: 22px; margin-bottom: 15px; }
+        p { color: #444; line-height: 1.6; font-size: 15px; margin-bottom: 20px; text-align: justify; }
+        
+        .btn {
+            background: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+        }
+        .btn:hover { background: #ff758f; transform: scale(1.05); }
+        
+        .hidden { display: none; }
+        .fade-in { animation: fadeIn 0.8s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <div class="hearts" id="hearts-bg"></div>
+
+    <div class="container">
+        <div id="step1" class="card fade-in">
+            <h1 style="font-size: 50px;">Love You Jan! ❤️</h1>
+            <button class="btn" onclick="nextStep(1, 2)">Next ✨</button>
+        </div>
+
+        <div id="step2" class="card hidden">
+            <h1>Special Message...</h1>
+            <p style="text-align: center;">Mery pass aapke liye kuch bohot pyaari lines hain... ❤️</p>
+            <button class="btn" onclick="nextStep(2, 3)">Aage Dekho ✨</button>
+        </div>
+
+        <div id="step3" class="card hidden">
+            <h2>My Special Person’s Birthday ❤️✨</h2>
+            <p>
+                Even if the whole world turns its back on me, I know you will always be there looking out for me. 
+                I am beyond thankful for everything you do and for that kind heart of yours, <b>mery shazady</b>. 🌍💎<br><br>
+                You are honestly one of the kindest people I’ve ever known. Your heart is filled with so much compassion, 
+                bravery, and empathy for others. On your special day, I pray that God rewards you endlessly for all 
+                the love and light you spread in this world. 🤲🌷✨
+            </p>
+            <button class="btn" onclick="nextStep(3, 4)">Click for Surprise 🎁</button>
+        </div>
+
+        <div id="step4" class="card hidden" style="max-height: 85vh; overflow-y: auto;">
+            <h2>Happy Birthday, Mera Bacha! 🎂🧸💜</h2>
+            <p>
+                I wouldn’t have bloomed into the person I am today if it wasn’t for you. Thank you for being my partner in everything—from supporting my wild conspiracy theories and adventure ideas to listening to my random nonsense talk all day long. 🌙💫 Our relationship gives a whole new meaning to the word "care." <br><br>
+                The time we’ve spent together might not be huge in numbers yet, but every second is special because of the laughter we share and the memories we’ve weaved together. 🧶💕 Being yours has taught me how precious an everlasting bond can be. <br><br>
+                Let’s grow old together and keep having this much fun until the end, In Sha Allah. 🤲💍 I used to wonder how it felt to have such an incredible, handsome, and intelligent husband... until I put myself in your shoes! 😉 I’m sure you feel pretty lucky to have my company every day, too! 💅✨ <br><br>
+                I cherish this day so much, <b>Meri Jaan</b>. I am thankful to God that you exist, that our paths crossed, and that we became partners. You are my absolute ishq. 💖🌹🔐
+            </p>
+            <button class="btn" onclick="location.reload()">See from Start ❤️</button>
+        </div>
+    </div>
+
+    <script>
+        function nextStep(current, next) {
+            document.getElementById('step' + current).classList.add('hidden');
+            let nextDiv = document.getElementById('step' + next);
+            nextDiv.classList.remove('hidden');
+            nextDiv.classList.add('fade-in');
+        }
+
+        // Generate Random Background Hearts
+        const heartsContainer = document.getElementById('hearts-bg');
+        for (let i = 0; i < 20; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-shape');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heart.style.opacity = Math.random();
+            heartsContainer.appendChild(heart);
+        }
+    </script>
+</body>
+</html>
